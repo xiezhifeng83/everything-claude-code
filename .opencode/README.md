@@ -1,21 +1,41 @@
 # OpenCode ECC Plugin
 
+> ⚠️ This README is specific to OpenCode usage.  
+> If you installed ECC via npm (e.g. `npm install opencode-ecc`), refer to the root README instead.
+
 Everything Claude Code (ECC) plugin for OpenCode - agents, commands, hooks, and skills.
 
 ## Installation
 
+## Installation Overview
+
+There are two ways to use Everything Claude Code (ECC):
+
+1. **npm package (recommended for most users)**  
+   Install via npm/bun/yarn and use the `ecc-install` CLI to set up rules and agents.
+
+2. **Direct clone / plugin mode**  
+   Clone the repository and run OpenCode directly inside it.
+
+Choose the method that matches your workflow below.
+
 ### Option 1: npm Package
 
 ```bash
-npm install opencode-ecc
+npm install ecc-universal
 ```
 
 Add to your `opencode.json`:
 
 ```json
 {
-  "plugin": ["opencode-ecc"]
+  "plugin": ["ecc-universal"]
 }
+```
+After installation, the `ecc-install` CLI becomes available:
+
+```bash
+npx ecc-install typescript
 ```
 
 ### Option 2: Direct Use
@@ -110,23 +130,27 @@ OpenCode has 20+ additional events not available in Claude Code.
 
 ## Skills
 
-All 16 ECC skills are available via the `instructions` array:
+The default OpenCode config loads 11 curated ECC skills via the `instructions` array:
 
 - coding-standards
 - backend-patterns
 - frontend-patterns
+- frontend-slides
 - security-review
 - tdd-workflow
-- continuous-learning
-- continuous-learning-v2
-- iterative-retrieval
 - strategic-compact
 - eval-harness
 - verification-loop
-- golang-patterns
-- golang-testing
-- clickhouse-io
-- pmx-guidelines
+- api-design
+- e2e-testing
+
+Additional specialized skills are shipped in `skills/` but not loaded by default to keep OpenCode sessions lean:
+
+- article-writing
+- content-engine
+- market-research
+- investor-materials
+- investor-outreach
 
 ## Configuration
 
